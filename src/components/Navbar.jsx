@@ -34,23 +34,30 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-white/70 backdrop-blur-xl transition duration-500 dark:border-slate-700/40 dark:bg-slate-950/80">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-white/70 backdrop-blur-2xl shadow-soft transition duration-500 dark:border-slate-700/40 dark:bg-slate-950/85">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link to="/" className="flex items-center gap-3 text-lg font-bold tracking-wide text-slate-900 dark:text-slate-100">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500 text-white shadow-glow">N</span>
-          Navitha
+        <Link to="/" className="flex items-center gap-3 text-lg font-semibold tracking-wide text-slate-900 dark:text-white">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500 text-white shadow-glow">N</span>
+          <span className="hidden sm:inline">Navitha</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`text-sm font-medium transition duration-300 ${location.pathname === item.path ? 'text-sky-500' : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`relative text-sm font-medium transition duration-300 ${
+                  active
+                    ? 'text-sky-500 after:absolute after:-bottom-2 after:left-0 after:h-1 after:w-full after:rounded-full after:bg-sky-500'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -59,7 +66,7 @@ export default function Navbar() {
             onClick={() => setDark((prev) => !prev)}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 shadow-soft transition duration-300 hover:border-sky-400 hover:text-sky-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:text-sky-400"
           >
-            {dark ? <MdOutlineLightMode size={20} /> : <MdDarkMode size={20} />}
+            {dark ? <MdOutlineLightMode size={22} /> : <MdDarkMode size={22} />}
           </button>
           <button
             aria-label="Toggle mobile menu"
@@ -72,13 +79,17 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-white/95 px-6 py-6 backdrop-blur-xl dark:bg-slate-950/95">
-          <div className="space-y-4">
+        <div className="border-t border-white/10 bg-white/95 px-6 py-5 backdrop-blur-2xl dark:bg-slate-950/95">
+          <div className="space-y-3">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block rounded-3xl px-4 py-3 text-base font-medium transition ${location.pathname === item.path ? 'bg-sky-500/10 text-sky-500' : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'}`}
+                className={`block rounded-3xl px-4 py-3 text-base font-medium transition ${
+                  location.pathname === item.path
+                    ? 'bg-sky-500/10 text-sky-500'
+                    : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
+                }`}
               >
                 {item.label}
               </Link>

@@ -30,10 +30,10 @@ export default function Contact() {
   };
 
   return (
-    <section className="section-container">
+    <section className="section-container page-transition">
       <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="page-card p-10"
@@ -41,9 +41,11 @@ export default function Contact() {
           <span className="inline-flex rounded-full bg-sky-500/10 px-4 py-2 text-sm font-semibold text-sky-500">
             Contact Info
           </span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">Let's create something amazing together.</h2>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">
+            Let's create something amazing together.
+          </h2>
           <p className="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-            Reach out for freelance projects, collaborations, or fun UI and frontend work. I'm responsive, friendly, and ready to bring your next idea to life.
+            Reach out for freelance projects, collaborations, or fun frontend work. I'm responsive, friendly, and ready to bring your next idea to life.
           </p>
           <div className="mt-10 space-y-4">
             {contactInfo.map((item) => (
@@ -56,17 +58,21 @@ export default function Contact() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="page-card p-10"
         >
-          <div className="mb-10 flex items-center justify-between gap-4">
+          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-sky-500">Send a Message</p>
-              <h3 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Reach out with your next project.</h3>
+              <h3 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">
+                Reach out with your next project.
+              </h3>
             </div>
-            <div className="rounded-3xl bg-sky-500/10 px-4 py-3 text-sm font-semibold text-sky-500">Fast response</div>
+            <div className="rounded-3xl bg-sky-500/10 px-4 py-3 text-sm font-semibold text-sky-500">
+              Fast response
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
